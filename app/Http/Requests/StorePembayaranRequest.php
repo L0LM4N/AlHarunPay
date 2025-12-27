@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Http\Requests\Pembayaran;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StorePembayaranRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        return [
+            'tagihan_id'    => 'required|exists:tagihans,id',
+            'tanggal_bayar' => 'required|date',
+            'jumlah'        => 'required|numeric|min:1',
+        ];
+    }
+}
