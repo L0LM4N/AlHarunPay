@@ -15,7 +15,7 @@ class StoreTagihanRequest extends FormRequest
     {
         return [
             'santri_id'     => 'required|exists:santris,id',
-            'bulan'         => 'required|regex:/^\d{4}-(0[1-9]|1[0-2])$/',
+            'bulan'         => ['required', 'date_format:Y-m'],
             'total_tagihan' => 'required|numeric|min:1',
         ];
     }
